@@ -1,0 +1,682 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> line
+Rule 1     line -> expression EOL
+Rule 2     line -> error EOL
+Rule 3     line -> EOL
+Rule 4     expression -> NUM
+Rule 5     expression -> L_BRA expression R_BRA
+Rule 6     expression -> expression ADD expression
+Rule 7     expression -> expression SUB expression
+Rule 8     expression -> expression MUL expression
+Rule 9     expression -> expression DIV expression
+Rule 10    expression -> SUB expression
+Rule 11    expression -> expression POW exponent
+Rule 12    exponent -> NUM
+Rule 13    exponent -> L_BRA exponent R_BRA
+Rule 14    exponent -> exponent ADD exponent
+Rule 15    exponent -> exponent SUB exponent
+Rule 16    exponent -> exponent MUL exponent
+Rule 17    exponent -> exponent DIV exponent
+Rule 18    exponent -> SUB exponent
+
+Terminals, with rules where they appear
+
+ADD                  : 6 14
+DIV                  : 9 17
+EOL                  : 1 2 3
+L_BRA                : 5 13
+MUL                  : 8 16
+NUM                  : 4 12
+POW                  : 11
+R_BRA                : 5 13
+SUB                  : 7 10 15 18
+error                : 2
+
+Nonterminals, with rules where they appear
+
+exponent             : 11 13 14 14 15 15 16 16 17 17 18
+expression           : 1 5 6 6 7 7 8 8 9 9 10 11
+line                 : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . line
+    (1) line -> . expression EOL
+    (2) line -> . error EOL
+    (3) line -> . EOL
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    error           shift and go to state 4
+    EOL             shift and go to state 3
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    line                           shift and go to state 1
+    expression                     shift and go to state 2
+
+state 1
+
+    (0) S' -> line .
+
+
+
+state 2
+
+    (1) line -> expression . EOL
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             shift and go to state 8
+    ADD             shift and go to state 9
+    SUB             shift and go to state 10
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+
+
+state 3
+
+    (3) line -> EOL .
+
+    $end            reduce using rule 3 (line -> EOL .)
+
+
+state 4
+
+    (2) line -> error . EOL
+
+    EOL             shift and go to state 14
+
+
+state 5
+
+    (4) expression -> NUM .
+
+    EOL             reduce using rule 4 (expression -> NUM .)
+    ADD             reduce using rule 4 (expression -> NUM .)
+    SUB             reduce using rule 4 (expression -> NUM .)
+    MUL             reduce using rule 4 (expression -> NUM .)
+    DIV             reduce using rule 4 (expression -> NUM .)
+    POW             reduce using rule 4 (expression -> NUM .)
+    R_BRA           reduce using rule 4 (expression -> NUM .)
+
+
+state 6
+
+    (5) expression -> L_BRA . expression R_BRA
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 15
+
+state 7
+
+    (10) expression -> SUB . expression
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 16
+
+state 8
+
+    (1) line -> expression EOL .
+
+    $end            reduce using rule 1 (line -> expression EOL .)
+
+
+state 9
+
+    (6) expression -> expression ADD . expression
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 17
+
+state 10
+
+    (7) expression -> expression SUB . expression
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 18
+
+state 11
+
+    (8) expression -> expression MUL . expression
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 19
+
+state 12
+
+    (9) expression -> expression DIV . expression
+    (4) expression -> . NUM
+    (5) expression -> . L_BRA expression R_BRA
+    (6) expression -> . expression ADD expression
+    (7) expression -> . expression SUB expression
+    (8) expression -> . expression MUL expression
+    (9) expression -> . expression DIV expression
+    (10) expression -> . SUB expression
+    (11) expression -> . expression POW exponent
+
+    NUM             shift and go to state 5
+    L_BRA           shift and go to state 6
+    SUB             shift and go to state 7
+
+    expression                     shift and go to state 20
+
+state 13
+
+    (11) expression -> expression POW . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 21
+
+state 14
+
+    (2) line -> error EOL .
+
+    $end            reduce using rule 2 (line -> error EOL .)
+
+
+state 15
+
+    (5) expression -> L_BRA expression . R_BRA
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    R_BRA           shift and go to state 25
+    ADD             shift and go to state 9
+    SUB             shift and go to state 10
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+
+
+state 16
+
+    (10) expression -> SUB expression .
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             reduce using rule 10 (expression -> SUB expression .)
+    ADD             reduce using rule 10 (expression -> SUB expression .)
+    SUB             reduce using rule 10 (expression -> SUB expression .)
+    MUL             reduce using rule 10 (expression -> SUB expression .)
+    DIV             reduce using rule 10 (expression -> SUB expression .)
+    R_BRA           reduce using rule 10 (expression -> SUB expression .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 10 (expression -> SUB expression .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 17
+
+    (6) expression -> expression ADD expression .
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             reduce using rule 6 (expression -> expression ADD expression .)
+    ADD             reduce using rule 6 (expression -> expression ADD expression .)
+    SUB             reduce using rule 6 (expression -> expression ADD expression .)
+    R_BRA           reduce using rule 6 (expression -> expression ADD expression .)
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+
+  ! MUL             [ reduce using rule 6 (expression -> expression ADD expression .) ]
+  ! DIV             [ reduce using rule 6 (expression -> expression ADD expression .) ]
+  ! POW             [ reduce using rule 6 (expression -> expression ADD expression .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+
+
+state 18
+
+    (7) expression -> expression SUB expression .
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             reduce using rule 7 (expression -> expression SUB expression .)
+    ADD             reduce using rule 7 (expression -> expression SUB expression .)
+    SUB             reduce using rule 7 (expression -> expression SUB expression .)
+    R_BRA           reduce using rule 7 (expression -> expression SUB expression .)
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+
+  ! MUL             [ reduce using rule 7 (expression -> expression SUB expression .) ]
+  ! DIV             [ reduce using rule 7 (expression -> expression SUB expression .) ]
+  ! POW             [ reduce using rule 7 (expression -> expression SUB expression .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+
+
+state 19
+
+    (8) expression -> expression MUL expression .
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             reduce using rule 8 (expression -> expression MUL expression .)
+    ADD             reduce using rule 8 (expression -> expression MUL expression .)
+    SUB             reduce using rule 8 (expression -> expression MUL expression .)
+    MUL             reduce using rule 8 (expression -> expression MUL expression .)
+    DIV             reduce using rule 8 (expression -> expression MUL expression .)
+    R_BRA           reduce using rule 8 (expression -> expression MUL expression .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 8 (expression -> expression MUL expression .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 20
+
+    (9) expression -> expression DIV expression .
+    (6) expression -> expression . ADD expression
+    (7) expression -> expression . SUB expression
+    (8) expression -> expression . MUL expression
+    (9) expression -> expression . DIV expression
+    (11) expression -> expression . POW exponent
+
+    EOL             reduce using rule 9 (expression -> expression DIV expression .)
+    ADD             reduce using rule 9 (expression -> expression DIV expression .)
+    SUB             reduce using rule 9 (expression -> expression DIV expression .)
+    MUL             reduce using rule 9 (expression -> expression DIV expression .)
+    DIV             reduce using rule 9 (expression -> expression DIV expression .)
+    R_BRA           reduce using rule 9 (expression -> expression DIV expression .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 9 (expression -> expression DIV expression .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 21
+
+    (11) expression -> expression POW exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    EOL             reduce using rule 11 (expression -> expression POW exponent .)
+    ADD             reduce using rule 11 (expression -> expression POW exponent .)
+    SUB             reduce using rule 11 (expression -> expression POW exponent .)
+    MUL             reduce using rule 11 (expression -> expression POW exponent .)
+    DIV             reduce using rule 11 (expression -> expression POW exponent .)
+    POW             reduce using rule 11 (expression -> expression POW exponent .)
+    R_BRA           reduce using rule 11 (expression -> expression POW exponent .)
+
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MUL             [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 22
+
+    (12) exponent -> NUM .
+
+    ADD             reduce using rule 12 (exponent -> NUM .)
+    SUB             reduce using rule 12 (exponent -> NUM .)
+    MUL             reduce using rule 12 (exponent -> NUM .)
+    DIV             reduce using rule 12 (exponent -> NUM .)
+    EOL             reduce using rule 12 (exponent -> NUM .)
+    POW             reduce using rule 12 (exponent -> NUM .)
+    R_BRA           reduce using rule 12 (exponent -> NUM .)
+
+
+state 23
+
+    (13) exponent -> L_BRA . exponent R_BRA
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 30
+
+state 24
+
+    (18) exponent -> SUB . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 31
+
+state 25
+
+    (5) expression -> L_BRA expression R_BRA .
+
+    EOL             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    ADD             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    SUB             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    MUL             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    DIV             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    POW             reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+    R_BRA           reduce using rule 5 (expression -> L_BRA expression R_BRA .)
+
+
+state 26
+
+    (14) exponent -> exponent ADD . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 32
+
+state 27
+
+    (15) exponent -> exponent SUB . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 33
+
+state 28
+
+    (16) exponent -> exponent MUL . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 34
+
+state 29
+
+    (17) exponent -> exponent DIV . exponent
+    (12) exponent -> . NUM
+    (13) exponent -> . L_BRA exponent R_BRA
+    (14) exponent -> . exponent ADD exponent
+    (15) exponent -> . exponent SUB exponent
+    (16) exponent -> . exponent MUL exponent
+    (17) exponent -> . exponent DIV exponent
+    (18) exponent -> . SUB exponent
+
+    NUM             shift and go to state 22
+    L_BRA           shift and go to state 23
+    SUB             shift and go to state 24
+
+    exponent                       shift and go to state 35
+
+state 30
+
+    (13) exponent -> L_BRA exponent . R_BRA
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    R_BRA           shift and go to state 36
+    ADD             shift and go to state 26
+    SUB             shift and go to state 27
+    MUL             shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 31
+
+    (18) exponent -> SUB exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    ADD             reduce using rule 18 (exponent -> SUB exponent .)
+    SUB             reduce using rule 18 (exponent -> SUB exponent .)
+    MUL             reduce using rule 18 (exponent -> SUB exponent .)
+    DIV             reduce using rule 18 (exponent -> SUB exponent .)
+    EOL             reduce using rule 18 (exponent -> SUB exponent .)
+    POW             reduce using rule 18 (exponent -> SUB exponent .)
+    R_BRA           reduce using rule 18 (exponent -> SUB exponent .)
+
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MUL             [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 32
+
+    (14) exponent -> exponent ADD exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    ADD             reduce using rule 14 (exponent -> exponent ADD exponent .)
+    SUB             reduce using rule 14 (exponent -> exponent ADD exponent .)
+    EOL             reduce using rule 14 (exponent -> exponent ADD exponent .)
+    POW             reduce using rule 14 (exponent -> exponent ADD exponent .)
+    R_BRA           reduce using rule 14 (exponent -> exponent ADD exponent .)
+    MUL             shift and go to state 28
+    DIV             shift and go to state 29
+
+  ! MUL             [ reduce using rule 14 (exponent -> exponent ADD exponent .) ]
+  ! DIV             [ reduce using rule 14 (exponent -> exponent ADD exponent .) ]
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+
+
+state 33
+
+    (15) exponent -> exponent SUB exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    ADD             reduce using rule 15 (exponent -> exponent SUB exponent .)
+    SUB             reduce using rule 15 (exponent -> exponent SUB exponent .)
+    EOL             reduce using rule 15 (exponent -> exponent SUB exponent .)
+    POW             reduce using rule 15 (exponent -> exponent SUB exponent .)
+    R_BRA           reduce using rule 15 (exponent -> exponent SUB exponent .)
+    MUL             shift and go to state 28
+    DIV             shift and go to state 29
+
+  ! MUL             [ reduce using rule 15 (exponent -> exponent SUB exponent .) ]
+  ! DIV             [ reduce using rule 15 (exponent -> exponent SUB exponent .) ]
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+
+
+state 34
+
+    (16) exponent -> exponent MUL exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    ADD             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    SUB             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    MUL             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    DIV             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    EOL             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    POW             reduce using rule 16 (exponent -> exponent MUL exponent .)
+    R_BRA           reduce using rule 16 (exponent -> exponent MUL exponent .)
+
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MUL             [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 35
+
+    (17) exponent -> exponent DIV exponent .
+    (14) exponent -> exponent . ADD exponent
+    (15) exponent -> exponent . SUB exponent
+    (16) exponent -> exponent . MUL exponent
+    (17) exponent -> exponent . DIV exponent
+
+    ADD             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    SUB             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    MUL             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    DIV             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    EOL             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    POW             reduce using rule 17 (exponent -> exponent DIV exponent .)
+    R_BRA           reduce using rule 17 (exponent -> exponent DIV exponent .)
+
+  ! ADD             [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MUL             [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 36
+
+    (13) exponent -> L_BRA exponent R_BRA .
+
+    ADD             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    SUB             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    MUL             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    DIV             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    EOL             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    POW             reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+    R_BRA           reduce using rule 13 (exponent -> L_BRA exponent R_BRA .)
+
